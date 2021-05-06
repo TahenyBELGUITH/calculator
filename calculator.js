@@ -17,6 +17,12 @@ app.get("/", function(req, res) {
 });
 
 
+
+app.get("/bmicalculator" , function(req,res){
+  res.sendFile(__dirname + "/bmicalculator.html");
+})
+
+
 app.post("/", function(req, res) {
   var num1 = Number(req.body.n1);
   var num2 = Number(req.body.n2);
@@ -26,6 +32,13 @@ res.send("Thank you for posting ! , The result of calculating is : " + result);
 })
 
 
+
+app.post("/bmicalculator" , function(req ,res){
+  var weight = parseFloat(req.body.weight);
+  var height = parseFloat(req.body.height);
+  var result = weight / (height * height);
+  res.send(" Thank you for posting your BMI is :" + result);
+})
 // Spin up at port 3000
 app.listen(3000, function() {
   console.log("port 3000 works here!");
